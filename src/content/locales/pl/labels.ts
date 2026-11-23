@@ -1,0 +1,140 @@
+import type { ToolUiLabels } from "../../types";
+
+export const toolUi: ToolUiLabels = {
+  "mouse-test": {
+    liveCounters: "Liczniki na żywo",
+    reset: "Resetuj",
+    counters: {
+      left: "Lewy",
+      right: "Prawy",
+      middle: "Środkowy",
+      forward: "Do przodu",
+      back: "Do tyłu",
+      double: "Podwójny",
+      up: "W górę",
+      down: "W dół",
+      total: "Razem",
+    },
+    panelHint:
+      "Należy kliknąć w tym panelu dowolnym przyciskiem, a następnie przewinąć kółko w górę i w dół. Kliknięcie prawym przyciskiem jest przechwytywane, więc menu się nie otworzy.",
+    privacyNote: "Wszystko jest liczone wyłącznie w tej karcie. Nic nie jest wysyłane.",
+    verdictClean: {
+      title: "Nie wykryto jeszcze usterek",
+      body: "Każdy przycisk rejestruje się prawidłowo. Można kontynuować, jeśli chce się dodatkowo sprawdzić próg drgania styków.",
+    },
+    verdictChatter: {
+      title: "Wykryto drganie styków imitujące podwójne kliknięcie ({count})",
+      body: "Dwa naciśnięcia tego samego przycisku dotarły w odstępie {gap} ms. To drganie styków, a nie prawdziwe podwójne kliknięcie.",
+    },
+  },
+  "scroll-test": {
+    start: "Rozpocznij test",
+    stop: "Zatrzymaj",
+    reset: "Resetuj",
+    secondsLeft: "pozostało {n} s",
+    scrollHere: "Przewijaj tutaj",
+    emptyChart: "Każde zdarzenie kółka pojawia się tutaj jako słupek",
+    noScrollNote:
+      "Strona nie przewija się, dopóki kursor znajduje się nad panelem.",
+    readout: "Odczyt",
+    stats: {
+      up: "Przewijanie w górę",
+      down: "Przewijanie w dół",
+      reverse: "Skoki wstecz",
+      total: "Wszystkie zdarzenia",
+    },
+    averageStep: "Średni krok",
+    deltaMode: "Tryb delty",
+    deviceType: "Typ urządzenia",
+    deltaPixel: "Piksel",
+    deltaLine: "Linia",
+    deltaPage: "Strona",
+    deviceNotched: "Kółko z ząbkami",
+    deviceSmooth: "Gładkie / trackpad",
+    verdictReverse: {
+      title: "Wykryto {n} zdarzeń wstecznych",
+      body: "Część zdarzeń kółka wskazywała kierunek przeciwny do reszty przebiegu. Aby to potwierdzić, należy przewijać powoli w jedną stronę — stały strumień wskazuje na brudny lub zużyty enkoder.",
+    },
+    verdictNone: {
+      title: "Nie odebrano żadnych zdarzeń kółka",
+      body: "Nic nie zostało zarejestrowane. Należy upewnić się, że kursor znajduje się nad panelem testowym, i przewinąć.",
+    },
+    verdictOk: {
+      title: "Kierunek przewijania jest spójny",
+      body: "Każde zdarzenie odpowiadało dominującemu kierunkowi w {n} próbkach. Kółko raportuje prawidłowo.",
+    },
+  },
+  "keyboard-test": {
+    tabCheck: "Test klawiszy",
+    tabRollover: "Test jednoczesnego nacisku",
+    keysHeld: "przytrzymano {n} klawiszy",
+    lastKey: "Ostatni klawisz",
+    pressAnyKey: "naciśnij dowolny klawisz",
+    recentPresses: "Ostatnie naciśnięcia",
+    spaceKey: "Spacja",
+    repeatDetected:
+      "{n} zdarzeń powtórzenia — zaciśnięty klawisz powtarza się po zwolnieniu",
+    noRepeats: "Nie wykryto zdarzeń powtórzenia",
+    focusHint:
+      "Najpierw należy kliknąć w dowolnym miejscu tego panelu, aby strona zyskała fokus klawiatury. Wpisywane dane nie są zapisywane ani przesyłane.",
+    rolloverIntro:
+      "Należy przytrzymać wszystkie {n} podświetlonych klawiszy jednocześnie. Jeśli każdy z nich zostanie zarejestrowany, klawiatura obsłużyła {n} jednoczesnych naciśnięć. Brak jednego oznacza, że to granica liczby równocześnie wciśniętych klawiszy.",
+    keysLabel: "Klawisze:",
+    nextCombination: "Następna kombinacja",
+    registered: "zarejestrowano {a} / {b}",
+    allRegistered: "Wszystkie {n} klawiszy zarejestrowane",
+    allRegisteredBody:
+      "Klawiatura obsłużyła {n} jednoczesnych naciśnięć bez ghostingu. Należy przejść do następnego poziomu, aby znaleźć faktyczną granicę.",
+  },
+  "cps-test": {
+    start: "Rozpocznij test",
+    stop: "Zatrzymaj",
+    cancel: "Anuluj",
+    reset: "Resetuj",
+    best: "Rekord: {n} CPS",
+    clicks: "kliknięć",
+    pressStart:
+      "Należy nacisnąć przycisk rozpoczęcia, a następnie klikać tutaj tak szybko, jak to możliwe",
+    clicksPerSecond: "kliknięć na sekundę",
+    clicksIn: "{n} kliknięć w {s} s",
+    readout: "Odczyt",
+    liveCps: "Bieżące CPS",
+    average: "Średnia",
+    noClicks: "Nie zarejestrowano kliknięć",
+    chartLabel: "Kliknięcia na sekundę",
+    barTitle: "Sekunda {n}: {v} kliknięć",
+    note: "Wynik zlicza kliknięcia otrzymane przez przeglądarkę, a nie opóźnienie styków. Nic nie jest wysyłane.",
+  },
+  "polling-rate-test": {
+    startMeasuring: "Rozpocznij pomiar",
+    stop: "Zatrzymaj",
+    reset: "Resetuj",
+    rawSamples: "{n} próbek surowych",
+    moveMouse: "Przesuń mysz",
+    wideCircles: "Szerokie, powolne ruchy po okręgu dają najczytelniejszy odczyt.",
+    readout: "Odczyt",
+    current: "Bieżąca",
+    peak: "Szczytowa",
+    average: "Średnia",
+    closestStandard: "Najbliższa standardowa częstotliwość",
+    samplingMethod: "Metoda próbkowania",
+    rawCoalesced: "Surowe, scalone",
+    frameLevel: "Poziom klatek",
+    verdictMove: {
+      title: "Przesuń mysz nad panelem",
+      body: "Większość myszy przestaje raportować, gdy nic się nie rusza. Aby uzyskać stabilny odczyt, należy ciągle poruszać wskaźnikiem.",
+    },
+    verdictFrame: {
+      title: "Próbkowanie na poziomie klatek",
+      body: "Ta przeglądarka nie udostępniła surowych zdarzeń wskaźnika, więc odczyt jest ograniczony przez częstotliwość odświeżania ekranu. Sama mysz najprawdopodobniej raportuje szybciej, niż wskazuje ta wartość.",
+    },
+    verdictUnstable: {
+      title: "Niestabilny odczyt w okolicach {hz} Hz",
+      body: "Częstotliwość nie ustala się na żadnej standardowej wartości. Zwykłą przyczyną są zakłócenia bezprzewodowe albo niski poziom baterii.",
+    },
+    verdictOk: {
+      title: "Raportowanie z częstotliwością około {hz} Hz",
+      body: "Odczyt jest stabilny i zbliżony do standardowej częstotliwości odpytywania.",
+    },
+  },
+};
