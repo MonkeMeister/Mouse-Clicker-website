@@ -19,6 +19,7 @@ const contentDir = path.resolve(here, "..", "src", "content");
 const FILES = [
   "ui.ts",
   "site.ts",
+  "blog.ts",
   "labels.ts",
   "mouse-test.ts",
   "scroll-test.ts",
@@ -27,7 +28,21 @@ const FILES = [
   "polling-rate-test.ts",
 ];
 
-const LOCALES = ["en", "de", "es", "hi", "ja", "pl", "pt-br", "tr"];
+/**
+ * Every locale, or just one when a name is passed on the command line.
+ *
+ * Checking a single locale keeps the signal clean while the other bundles are
+ * still being written.
+ */
+const ALL_LOCALES = ["en", "de", "es", "hi", "ja", "pl", "pt-br", "tr"];
+const only = process.argv[2];
+const LOCALES = only ? ALL_LOCALES.filter((code) => code === only) : ALL_LOCALES;
+
+if (LOCALES.length === 0) {
+  console.log(`FAIL — unknown locale "${only}"`);
+  process.exit(1);
+}
+
 const PLACEHOLDER = /\{[a-zA-Z]+\}/g;
 
 const problems = [];
@@ -177,6 +192,26 @@ for (const locale of LOCALES) {
             `placeholder mismatch: expected [${wantMarks}], got [${gotMarks}]`,
           );
         }
+      }
+    }
+  }
+
+  /* ---- The blog copy must be written in the target language ------------ */
+  const blogPath = path.join(contentDir, "locales", locale, "blog.ts");
+  if (fs.existsSync(blogPath)) {
+    const englishText = new Set(
+      reference
+        .get("blog.ts")
+        .entries.filter((entry) => entry.kind === "string")
+        .map((entry) => entry.value),
+    );
+
+    for (const entry of shapeOfFile(blogPath).entries) {
+      if (entry.kind !== "string") continue;
+      /* Short values are slugs and identifiers, which are deliberately shared. */
+      if (entry.value.trim().length < 60) continue;
+      if (englishText.has(entry.value)) {
+        fail(locale, `blog.ts:${entry.path}`, "paragraph copied from the English text");
       }
     }
   }

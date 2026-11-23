@@ -25,7 +25,6 @@ export const ui: UiStrings = {
     openTest: "Open the test",
     fullGuide: "Full guide and FAQ →",
     readMore: "Read the post",
-    inProduction: "In production",
     advertisement: "Advertisement",
     breadcrumbHome: "Home",
     breadcrumbTools: "Tools",

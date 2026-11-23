@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Lütfen kişisel bilgilerinizi ya da cihaz yapılandırmanıza dair ayrıntıları göndermeyin. Bir aracı tanıklamak için gönderdiğiniz hiçbir şeye ihtiyaç duymuyoruz ve göndermemenizi tercih ederiz.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Giriş donanımı, tarayıcı olay API'leri ve fare, klavye ile işaretçiler için daha iyi tanılama araçları geliştirmek üzerine pratik notlar.",
-  heading: "Blog",
-  lead: "Giriş donanımı, onu ortaya çıkaran tarayıcı olay API'leri ve bu sitedeki tanılama araçlarının nasıl kurulduğu üzerine notlar. Donanımınızın ne yaptığını anlamak isteyen, sadece değiştirmek isteyenler için yazıldı.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "Bir tarayıcı farenizi gerçekte nasıl görür",
-      excerpt:
-        "İmleciniz bir nesne değildir; bir konum örneği akışıdır. Bu akışın nereden geldiğini anlamak, hayatınız boyunca peşinde koşacağınız neredeyse her donanım arızasını açıklar.",
-      readTime: "8 dk okuma",
-      dateLabel: "Henüz yayımlanmadı",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "Çift tıklama zıplaması, doğru şekilde anlatıldı",
-      excerpt:
-        "Aşınmış bir fare anahtarının tek basış için neden iki tıklama gönderdiği, bunun gerçek bir çift tıklama ile nasıl farklılaştığı ve zamanlama imzasının neye benzediği.",
-      readTime: "6 dk okuma",
-      dateLabel: "Henüz yayımlanmadı",
-    },
-  ],
-  noteBefore:
-    "İki yazı üretim aşamasında ve kısa süre içinde burada yayımlanacak. Bu arada",
-  noteLinkLabel: "hakkımızda sayfası",
-  noteAfter:
-    "her ölçümün nasıl çalıştığını anlatıyor ve her araç sayfasına tam bir rehber ile SSS eklenmiş durumda.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Gizlilik politikası",

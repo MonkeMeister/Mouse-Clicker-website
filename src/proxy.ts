@@ -1,11 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { TOOL_SLUGS } from "@/content/types";
+import { POST_SLUGS, TOOL_SLUGS } from "@/content/types";
 import { DEFAULT_LOCALE, LOCALE_CODES } from "@/lib/i18n";
 
 const LOCALES = LOCALE_CODES as readonly string[];
 
 /** Every valid tool slug, as a set, so the proxy can check one cheaply. */
 const TOOL_SLUG_SET: ReadonlySet<string> = new Set(TOOL_SLUGS);
+
+/** Every valid blog post slug, as a set. */
+const POST_SLUG_SET: ReadonlySet<string> = new Set(POST_SLUGS);
 
 /**
  * Path the unknown-tool-slug request is rewritten to.
@@ -18,14 +21,13 @@ const TOOL_SLUG_SET: ReadonlySet<string> = new Set(TOOL_SLUGS);
 const NOT_FOUND_PATH = "_not-found";
 
 /**
- * True when the path addresses a tool page that does not exist.
+ * True when the path addresses a tool page or a blog post that does not exist.
  */
-function isUnknownToolSlug(segments: string[]): boolean {
-  return (
-    segments.length === 2 &&
-    segments[0] === "tools" &&
-    !TOOL_SLUG_SET.has(segments[1])
-  );
+function isUnknownSlug(segments: string[]): boolean {
+  if (segments.length !== 2) return false;
+  if (segments[0] === "tools") return !TOOL_SLUG_SET.has(segments[1]);
+  if (segments[0] === "blog") return !POST_SLUG_SET.has(segments[1]);
+  return false;
 }
 
 /**
@@ -45,11 +47,11 @@ export function proxy(request: NextRequest) {
     const rest = segments.slice(1);
 
     /*
-     * Unknown tool slugs have to be answered here.
+     * Unknown tool and post slugs have to be answered here.
      *
-     * The tool route is prerendered, so with Cache Components its static
-     * shell — and the 200 status line that arrives with it — is already on
-     * the wire before the page component runs. A `notFound()` raised that
+     * The tool and blog routes are prerendered, so with Cache Components their
+     * static shell — and the 200 status line that arrives with it — is already
+     * on the wire before the page component runs. A `notFound()` raised that
      * late can no longer change the status, and the URL answers 200 with a
      * not-found page: a soft 404 that search engines treat as a valid page.
      *
@@ -57,7 +59,7 @@ export function proxy(request: NextRequest) {
      * before anything is streamed, so the response is a real 404 with the
      * not-found UI in the visitor's language.
      */
-    if (isUnknownToolSlug(rest)) {
+    if (isUnknownSlug(rest)) {
       const url = request.nextUrl.clone();
       url.pathname = `/${first}/${NOT_FOUND_PATH}`;
       return NextResponse.rewrite(url);
@@ -74,7 +76,7 @@ export function proxy(request: NextRequest) {
   }
 
   /* An unprefixed path is English, served from the root. */
-  if (isUnknownToolSlug(segments)) {
+  if (isUnknownSlug(segments)) {
     const url = request.nextUrl.clone();
     url.pathname = `/${DEFAULT_LOCALE}/${NOT_FOUND_PATH}`;
     return NextResponse.rewrite(url);

@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Por favor, não envie informações pessoais nem detalhes da configuração do seu dispositivo. Nada do que você mandar é necessário para diagnosticar uma ferramenta, e preferiríamos que não mandasse.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Notas práticas sobre hardware de entrada, APIs de eventos do navegador e como construir diagnósticos melhores para mouse, teclado e ponteiro.",
-  heading: "Blog",
-  lead: "Notas sobre hardware de entrada, sobre as APIs de eventos do navegador que o expõem e sobre como os diagnósticos deste site são montados. Escrito para quem quer entender o que o seu hardware está fazendo, em vez de simplesmente trocá-lo.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "Como o navegador realmente enxerga o seu mouse",
-      excerpt:
-        "O seu cursor não é um objeto. É um fluxo de amostras de posição, e entender de onde vem esse fluxo explica quase todo defeito de hardware que você vai investigar.",
-      readTime: "8 min de leitura",
-      dateLabel: "Ainda não publicado",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "Vibração em duplo clique, explicada como deve ser",
-      excerpt:
-        "Por que um switch de mouse desgastado envia dois cliques para um único acionamento, como isso difere de um duplo clique de verdade e qual é a assinatura de tempo disso.",
-      readTime: "6 min de leitura",
-      dateLabel: "Ainda não publicado",
-    },
-  ],
-  noteBefore:
-    "Dois posts estão em produção e serão publicados aqui em breve. Enquanto isso, a",
-  noteLinkLabel: "página Sobre",
-  noteAfter:
-    "explica como cada medição funciona, e cada página de ferramenta tem um guia completo e perguntas frequentes.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Política de privacidade",

@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Por favor, no envíes información personal ni detalles sobre la configuración de tu dispositivo. Nada de lo que envíes hace falta para diagnosticar una herramienta y preferiríamos que no lo hicieras.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Notas prácticas sobre hardware de entrada, las APIs de eventos del navegador y cómo crear mejores diagnósticos para ratones, teclados y punteros.",
-  heading: "Blog",
-  lead: "Notas sobre el hardware de entrada, las APIs de eventos del navegador que lo exponen y cómo se construyen los diagnósticos de este sitio. Escrito para quien quiere entender qué hace su hardware en lugar de limitarse a cambiarlo.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "Cómo ve un navegador tu ratón de verdad",
-      excerpt:
-        "El cursor no es un objeto. Es un flujo de muestras de posición, y entender de dónde sale ese flujo explica casi todos los fallos de hardware que vayas a investigar.",
-      readTime: "8 min de lectura",
-      dateLabel: "Todavía no publicado",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "El chatter de doble clic, explicado a fondo",
-      excerpt:
-        "Por qué un switch gastado envía dos clics por una pulsación, en qué se diferencia de un doble clic real y cómo es la firma temporal de ese fallo.",
-      readTime: "6 min de lectura",
-      dateLabel: "Todavía no publicado",
-    },
-  ],
-  noteBefore:
-    "Hay dos entradas en producción que se publicarán aquí en breve. Mientras tanto, la",
-  noteLinkLabel: "página «Acerca de»",
-  noteAfter:
-    "explica cómo funciona cada medición, y todas las páginas de herramientas llevan adjunta una guía completa con preguntas frecuentes.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Política de privacidad",

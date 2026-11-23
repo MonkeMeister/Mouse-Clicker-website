@@ -19,7 +19,8 @@ npm test           # 40 assertions over the diagnostic rules
 
 ```bash
 npm run verify:locales   # every locale bundle matches the English structure
-npm run sweep:locales    # live sweep of all 88 routes, hreflang, canonicals
+npm run audit:characters # no stray characters from another writing system
+npm run sweep:locales    # live sweep of all 104 routes, hreflang, canonicals
 npm run verify:notfound  # every locale returns a real 404 in its own language
 ```
 
@@ -50,11 +51,9 @@ drift between builds:
 | `public/_headers` | Long-lived cache headers for the hashed build assets |
 | `.dev.vars` | Local-only variables for `next dev`; gitignored |
 
-**The Worker name must match in three places:** the `name` in `wrangler.jsonc`,
-the `service` of the `WORKER_SELF_REFERENCE` binding, and the Worker in the
-Cloudflare dashboard. If they diverge, the deploy fails with
-`Service binding 'WORKER_SELF_REFERENCE' references Worker '…' which was not
-found [code: 10143]`.
+**The Worker name must match in two places:** the `name` in `wrangler.jsonc` and
+the Worker in the Cloudflare dashboard. If they diverge, the deploy fails with a
+name error from Wrangler.
 
 This project deliberately has **no `WORKER_SELF_REFERENCE` binding**. The
 self-reference is only used by the Durable Object queue and by the Pages Router
@@ -77,11 +76,11 @@ Set the Worker name in the dashboard to `mouselab` so it matches
 **One thing to know about 404s.** With Cache Components, routes are partially
 prerendered: the static shell — and the `200` status line that arrives with
 it — is on the wire before the page component runs. A `notFound()` raised that
-late can no longer change the status, so an unknown tool URL would answer
-`200` with a not-found page: a soft 404. `src/proxy.ts` therefore checks the
-tool slug before the request reaches the route and rewrites unknown ones to
-the catch-all, which is not prerendered and so answers a real `404` — with the
-not-found page still in the visitor's language.
+late can no longer change the status, so an unknown tool or blog URL would
+answer `200` with a not-found page: a soft 404. `src/proxy.ts` therefore checks
+the tool and post slug before the request reaches the route and rewrites
+unknown ones to the catch-all, which is not prerendered and so answers a real
+`404` — with the not-found page still in the visitor's language.
 
 ## Stack
 
@@ -117,7 +116,7 @@ back to the clean URL, so every page has exactly one address.
 
 **How search engines see it.** Each page emits `hreflang` alternates for all
 eight languages plus `x-default`, a per-language canonical URL, and a
-`inLanguage` value inside the JSON-LD. The sitemap lists all 88 URLs (11 pages
+`inLanguage` value inside the JSON-LD. The sitemap lists all 104 URLs (13 pages
 × 8 languages), each with its own `xhtml:link` alternate cluster. The language
 switcher's links stay in the DOM and are hidden with the `hidden` attribute
 rather than being mounted on click, so a crawler finds a real link to every
@@ -129,10 +128,11 @@ language of the page it is on.
 src/content/
 ├── en/                    English source of truth
 │   ├── ui.ts              chrome strings (nav, footer, buttons)
-│   ├── site.ts            home, tools index, about, contact, blog, privacy
+│   ├── site.ts            home, tools index, about, contact, privacy
+│   ├── blog.ts            the blog index and every article in full
 │   ├── labels.ts          labels for the five interactive panels
 │   └── <tool>.ts          one file per tool: long-form copy + FAQ
-├── locales/<code>/        the same eight files, per language
+├── locales/<code>/        the same nine files, per language
 ├── types.ts               the content contract every bundle satisfies
 └── registry.ts            locale → bundle map
 ```
@@ -142,7 +142,7 @@ renders identically whatever the language. `src/lib/i18n.ts` holds the locale
 registry and the path helpers; `src/lib/seo.ts` builds the hreflang maps.
 
 **Adding a language.** Add an entry to `LOCALES` in `src/lib/i18n.ts`, copy
-`src/content/en/` to `src/content/locales/<code>/`, translate the eight files,
+`src/content/en/` to `src/content/locales/<code>/`, translate the nine files,
 and register the bundle in `src/content/registry.ts`. Then run
 `npm run verify:locales` and `npm run sweep:locales`.
 
@@ -163,6 +163,7 @@ src/
 │   │   ├── page.tsx       homepage — hero, live tester, tool grid, FAQ
 │   │   ├── tools/         tool index and one route for all five tools
 │   │   └── about/ contact/ blog/ privacy-policy/
+│   │       └── blog/[slug]/  one route for every article
 │   ├── sitemap.ts robots.ts
 ├── components/
 │   ├── Header.tsx Footer.tsx Logo.tsx Container.tsx
@@ -178,6 +179,7 @@ src/
 │   ├── i18n.ts            locale registry and path helpers
 │   ├── seo.ts             hreflang and canonical helpers
 │   ├── tools.ts           tool registry
+│   ├── blog.ts            blog registry, post slugs and the publish date
 │   └── site.ts            site name, URL, build year
 ├── proxy.ts               locale rewrite / redirect, and the 404 routing
 └── scripts/verify-logic.ts   the test suite
@@ -216,7 +218,18 @@ placeholdered in `AdSlot.tsx` until the AdSense account is live.
 
 **Real content, not filler.** Each tool page carries roughly 2,000–2,600 words
 plus an eight-question FAQ, written to be genuinely useful rather than
-keyword-stuffed.
+keyword-stuffed. The two blog articles are written the same way: full articles
+of roughly a thousand words each, with their own sections and FAQ, in every one
+of the eight languages.
+
+**The blog is a real page set, not a placeholder list.** Each article is a
+prerendered page at `/blog/<slug>` with its own title, description, canonical
+URL, hreflang cluster, `Article` and `FAQPage` schema, breadcrumbs and a link
+to the tool it explains. `src/content/<locale>/blog.ts` holds the index copy
+and the full body of both articles; `src/lib/blog.ts` owns the slug list and
+the publication date. Adding an article means adding its slug to `POST_SLUGS`
+in `src/content/types.ts`, writing the body in every locale, and the route,
+the sitemap and the proxy pick it up from there.
 
 **Every language is a first-class page set.** A locale is never a machine
 translation of the English page. Each one is rewritten for native readers,
@@ -249,9 +262,19 @@ the same ones the UI components call.
 
 `npm run verify:locales` compiles every locale bundle and compares its shape
 against the English one, so a missing field or a stray key fails loudly instead
-of rendering an empty block.
+of rendering an empty block. It also fails a locale that has copied a
+paragraph of the English article verbatim. Pass a locale name to check just
+one bundle: `node scripts/verify-locales.mjs ja`.
 
-`npm run sweep:locales` requests all 88 routes against a running server and
+`npm run audit:characters` guards the non-Latin bundles against a subtler
+fault. The structural verifier cannot tell that a Japanese article has picked
+up a stray Chinese character or a Korean fragment, because the text is still
+valid TypeScript and the shape is unchanged. The audit compares every
+non-ASCII codepoint in a locale's `blog.ts` against the codepoints already
+present in that locale's other content files, and reports anything that
+belongs to another writing system.
+
+`npm run sweep:locales` requests all 104 routes against a running server and
 checks each one for the right `<html lang>`, a localised title and heading,
 copy that is not still English, the full eight-language hreflang cluster, a
 matching canonical URL, a language switcher that links to every language of the

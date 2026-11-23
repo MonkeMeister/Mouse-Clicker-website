@@ -1,11 +1,12 @@
 import type { LocaleContent } from "../../types";
+import { blog } from "./blog";
 import { toolUi } from "./labels";
 import { cpsTest } from "./cps-test";
 import { keyboardTest } from "./keyboard-test";
 import { mouseTest } from "./mouse-test";
 import { pollingRateTest } from "./polling-rate-test";
 import { scrollTest } from "./scroll-test";
-import { about, blog, contact, home, privacy, toolsIndex } from "./site";
+import { about, contact, home, privacy, toolsIndex } from "./site";
 import { ui } from "./ui";
 
 export const pl: LocaleContent = {

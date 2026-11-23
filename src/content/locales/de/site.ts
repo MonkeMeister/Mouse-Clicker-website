@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Bitte senden Sie keine personenbezogenen Daten oder Angaben zu Ihrer Gerätekonfiguration. Für die Diagnose eines Tools brauchen wir nichts davon, und wir hätten lieber, dass Sie es auch nicht senden.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Praktische Notizen zu Eingabegeräten, Browser-Event-APIs und dem Bau besserer Diagnosen für Mäuse, Tastaturen und Zeiger.",
-  heading: "Blog",
-  lead: "Notizen zu Eingabegeräten, zu den Browser-Event-APIs, die sie zugänglich machen, und dazu, wie die Diagnosen auf dieser Seite zusammengesetzt sind. Geschrieben für Menschen, die verstehen wollen, was ihre Hardware tut, statt sie einfach zu ersetzen.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "Wie ein Browser Ihre Maus tatsächlich sieht",
-      excerpt:
-        "Ihr Zeiger ist kein Objekt. Er ist ein Strom von Positionsmesswerten — und zu wissen, woher dieser Strom kommt, erklärt fast jeden Hardwarefehler, dem Sie irgendwann nachjagen werden.",
-      readTime: "8 Min. Lesezeit",
-      dateLabel: "Noch nicht veröffentlicht",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "Doppelklick-Prellen, richtig erklärt",
-      excerpt:
-        "Warum ein verschlissener Mausschalter zwei Klicks für einen Druck sendet, wie sich das von einem echten Doppelklick unterscheidet und wie das Timing-Signal dazu aussieht.",
-      readTime: "6 Min. Lesezeit",
-      dateLabel: "Noch nicht veröffentlicht",
-    },
-  ],
-  noteBefore:
-    "Zwei Beiträge sind in Arbeit und werden in Kürze hier veröffentlicht. In der Zwischenzeit erklärt die",
-  noteLinkLabel: "Über-uns-Seite",
-  noteAfter:
-    "wie jede Messung funktioniert, und zu jedem Tool gehört eine vollständige Anleitung mit FAQ.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Datenschutzerklärung",

@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Please do not send personal information or details about your device configuration. Nothing you send is needed to diagnose a tool, and we would rather you did not.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Practical notes on input hardware, browser event APIs, and how to build better diagnostics for mice, keyboards and pointers.",
-  heading: "Blog",
-  lead: "Notes on input hardware, the browser event APIs that expose it, and how the diagnostics on this site are put together. Written for people who want to understand what their hardware is doing rather than just replace it.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "How a browser actually sees your mouse",
-      excerpt:
-        "Your cursor is not an object. It is a stream of position samples, and understanding where that stream comes from explains almost every hardware fault you will ever chase.",
-      readTime: "8 min read",
-      dateLabel: "Not published yet",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "Double-click chatter, explained properly",
-      excerpt:
-        "Why a worn mouse switch sends two clicks for one press, how it differs from an actual double-click, and what the timing signature looks like.",
-      readTime: "6 min read",
-      dateLabel: "Not published yet",
-    },
-  ],
-  noteBefore:
-    "Two posts are in production and will be published here shortly. In the meantime, the",
-  noteLinkLabel: "about page",
-  noteAfter:
-    "explains how each measurement works, and every tool page has a full guide and FAQ attached to it.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Privacy policy",

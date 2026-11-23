@@ -27,6 +27,8 @@ const PATHS = [
   "/tools/polling-rate-test",
   "/about",
   "/blog",
+  "/blog/how-a-browser-sees-your-mouse",
+  "/blog/double-click-chatter-explained",
   "/contact",
   "/privacy-policy",
 ];
@@ -134,9 +136,11 @@ if (redirect.status !== 308) {
 }
 
 /* Unknown paths must 404. */
-const missing = await fetchStable(`${BASE}/de/tools/nope`, 404);
-if (missing.status !== 404) {
-  problems.push(`${BASE}/de/tools/nope — expected 404, got ${missing.status}`);
+for (const missingPath of ["/de/tools/nope", "/de/blog/nope", "/blog/nope"]) {
+  const missing = await fetchStable(`${BASE}${missingPath}`, 404);
+  if (missing.status !== 404) {
+    problems.push(`${BASE}${missingPath} — expected 404, got ${missing.status}`);
+  }
 }
 
 /* The sitemap must list every locale. */

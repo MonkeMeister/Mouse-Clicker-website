@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -197,36 +196,6 @@ export const contact: ContactContent = {
     "Prosimy nie przesyłać danych osobowych ani szczegółów konfiguracji urządzenia. Nic z przesłanych informacji nie jest potrzebne do zdiagnozowania narzędzia, a wolelibyśmy ich nie otrzymywać.",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "Blog",
-  metaDescription:
-    "Praktyczne notatki o sprzęcie wejściowym, interfejsach API zdarzeń przeglądarki i o tym, jak budować lepsze narzędzia diagnostyczne dla myszy, klawiatur i wskaźników.",
-  heading: "Blog",
-  lead: "Notatki o sprzęcie wejściowym, o API zdarzeń przeglądarki, które go udostępniają, oraz o tym, jak zbudowano narzędzia diagnostyczne w tej witrynie. Napisane dla osób, które chcą zrozumieć, co robi ich sprzęt, zamiast po prostu go wymieniać.",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "Jak przeglądarka naprawdę widzi mysz",
-      excerpt:
-        "Kursor nie jest obiektem. Jest strumieniem próbek pozycji, a zrozumienie, skąd bierze się ten strumień, wyjaśnia niemal każdy usterek sprzętu, jaki kiedykolwiek będzie śledzić.",
-      readTime: "8 min czytania",
-      dateLabel: "Jeszcze nieopublikowane",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "Drganie styków a podwójne kliknięcie",
-      excerpt:
-        "Dlaczego zużyty styk myszy wysyła dwa kliknięcia przy jednym naciśnięciu, czym to się różni od prawdziwego podwójnego kliknięcia i jak wygląda sygnatura czasowa tego zjawiska.",
-      readTime: "6 min czytania",
-      dateLabel: "Jeszcze nieopublikowane",
-    },
-  ],
-  noteBefore:
-    "Dwa wpisy są w produkcji i wkrótce pojawią się tutaj. Tymczasem",
-  noteLinkLabel: "strona „O nas”",
-  noteAfter:
-    "wyjaśnia, jak działa każdy pomiar, a każde narzędzie ma przy sobie pełny opis i FAQ.",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "Polityka prywatności",

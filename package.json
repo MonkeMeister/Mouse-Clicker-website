@@ -13,6 +13,7 @@
     "lint": "eslint",
     "test": "node scripts/verify-logic.ts",
     "verify:locales": "node scripts/verify-locales.mjs",
+    "audit:characters": "node scripts/audit-blog-characters.mjs",
     "sweep:locales": "node scripts/sweep-locales.mjs",
     "verify:notfound": "node scripts/verify-not-found.mjs"
   },

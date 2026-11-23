@@ -16,6 +16,15 @@ const CASES = [
   ["pl", "/pl/tools/nope", "Ta strona nie istnieje", "Strony, której szukasz, tu nie ma."],
   ["pt-br", "/pt-br/tools/nope", "Esta página não existe", "A página que você procurava não está aqui."],
   ["tr", "/tr/tools/nope", "Bu sayfa mevcut değil", "Aradığınız sayfa burada değil."],
+  // Unknown blog post slugs have to 404 in exactly the same way.
+  ["en", "/blog/nope", "This page does not exist", "The page you were looking for is not here."],
+  ["de", "/de/blog/nope", "Diese Seite gibt es nicht", "Die gesuchte Seite ist hier nicht zu finden."],
+  ["es", "/es/blog/nope", "Esta página no existe", "La página que buscabas no está aquí."],
+  ["hi", "/hi/blog/nope", "यह पेज मौजूद नहीं है", "आप जिस पेज की तलाश कर रहे थे, वह यहाँ नहीं है।"],
+  ["ja", "/ja/blog/nope", "このページは存在しません", "お探しのページはここにはありません。"],
+  ["pl", "/pl/blog/nope", "Ta strona nie istnieje", "Strony, której szukasz, tu nie ma."],
+  ["pt-br", "/pt-br/blog/nope", "Esta página não existe", "A página que você procurava não está aqui."],
+  ["tr", "/tr/blog/nope", "Bu sayfa mevcut değil", "Aradığınız sayfa burada değil."],
 ];
 
 const problems = [];

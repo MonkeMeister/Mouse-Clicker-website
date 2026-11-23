@@ -25,7 +25,6 @@ export const ui: UiStrings = {
     openTest: "テストを開く",
     fullGuide: "詳しいガイドとFAQ →",
     readMore: "記事を読む",
-    inProduction: "制作中",
     advertisement: "広告",
     breadcrumbHome: "ホーム",
     breadcrumbTools: "ツール",

@@ -43,6 +43,21 @@ export const TOOL_SLUGS = [
 
 export type ToolSlug = (typeof TOOL_SLUGS)[number];
 
+/**
+ * Slugs of every blog post, independent of language.
+ *
+ * The slugs are the same in every locale so that a post keeps one address per
+ * language and the hreflang cluster lines up. They live here, next to the tool
+ * slugs, so the proxy can reject unknown post slugs without pulling the whole
+ * content registry into its bundle.
+ */
+export const POST_SLUGS = [
+  "how-a-browser-sees-your-mouse",
+  "double-click-chatter-explained",
+] as const;
+
+export type PostSlug = (typeof POST_SLUGS)[number];
+
 /* ------------------------------------------------------------------ */
 /* Shared chrome                                                       */
 /* ------------------------------------------------------------------ */
@@ -70,7 +85,6 @@ export type UiStrings = {
     openTest: string;
     fullGuide: string;
     readMore: string;
-    inProduction: string;
     advertisement: string;
     breadcrumbHome: string;
     breadcrumbTools: string;
@@ -165,21 +179,36 @@ export type ContactContent = {
   messageNote: string;
 };
 
+export type BlogPostSection = {
+  heading: string;
+  paragraphs: string[];
+  /** Optional bullet list rendered under the paragraphs. */
+  bullets?: string[];
+};
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  excerpt: string;
+  readTime: string;
+  /** Publication date, written the way the language of the page writes dates. */
+  dateLabel: string;
+  /** Opening paragraph, shown under the title before the first section. */
+  lead: string;
+  sections: BlogPostSection[];
+  faqs: Faq[];
+  /** Slug of the tool the post explains, linked at the end of the article. */
+  toolSlug: ToolSlug;
+};
+
 export type BlogContent = {
   metaTitle: string;
   metaDescription: string;
   heading: string;
   lead: string;
-  posts: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    readTime: string;
-    dateLabel: string;
-  }[];
-  noteBefore: string;
-  noteLinkLabel: string;
-  noteAfter: string;
+  posts: BlogPost[];
 };
 
 export type PrivacyContent = {

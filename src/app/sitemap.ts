@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { LOCALES, localeUrl } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
+import { POST_SLUGS } from "@/lib/blog";
 import { TOOL_SLUGS } from "@/lib/tools";
 
 const LAST_MODIFIED = new Date("2026-11-22T00:00:00.000Z");
@@ -27,6 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...TOOL_SLUGS.map((slug) => ({
       path: `/tools/${slug}`,
       priority: 0.9,
+    })),
+    ...POST_SLUGS.map((slug) => ({
+      path: `/blog/${slug}`,
+      priority: 0.7,
     })),
   ];
 

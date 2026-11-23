@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  BlogContent,
   ContactContent,
   HomeContent,
   PrivacyContent,
@@ -122,31 +121,6 @@ export const contact: ContactContent = {
   messageNote: "個人情報や端末の設定情報は記載しないでください。ツールの診断のために必要な情報ではありませんので、控えましょう。",
 };
 
-export const blog: BlogContent = {
-  metaTitle: "ブログ",
-  metaDescription: "入力デバイス、ブラウザーのイベントAPI、マウスやキーボードのより良い診断ツールの作り方について、実務寄りのメモ。",
-  heading: "ブログ",
-  lead: "入力デバイス、ブラウザーのイベントAPI、そしてこのサイトの診断ツールの作り方についてのメモ。ハードウェアをただ買い替えるのではなく、いま何が起きているかを理解したい人のために書きました。",
-  posts: [
-    {
-      slug: "how-a-browser-sees-your-mouse",
-      title: "ブラウザはあなたのマウスをどう見ているか",
-      excerpt: "カーソルはオブジェクトではありません。位置サンプルの流れであり、その流れがどこから来ているのかを理解すれば、将来追いかけることになるハードウェア上の不具合のほとんどを説明できます。",
-      readTime: "読了8分",
-      dateLabel: "未公開",
-    },
-    {
-      slug: "double-click-chatter-explained",
-      title: "ダブルクリックのチャターを正しく説明する",
-      excerpt: "摩耗したマウスのスイッチが1回の押しで2回分のクリックを送るのはなぜなのか、実際のダブルクリックとの違い、そして時間的な特徴がどう見えるのか。",
-      readTime: "読了6分",
-      dateLabel: "未公開",
-    },
-  ],
-  noteBefore: "2本の記事を制作中で、まもなくここに公開します。それまでの間、",
-  noteLinkLabel: "MouseLabのAboutページ",
-  noteAfter: "で各測定のしくみを説明しており、各ツールページには詳しいガイドとFAQも付いています。",
-};
 
 export const privacy: PrivacyContent = {
   metaTitle: "プライバシーポリシー",
