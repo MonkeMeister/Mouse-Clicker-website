@@ -24,6 +24,64 @@ npm run verify:notfound  # every locale returns a real 404 in its own language
 ```
 
 The three `verify`/`sweep` scripts expect a server on `http://localhost:3000`.
+They take a base URL argument, so they can also be pointed at a preview:
+
+```bash
+npm run sweep:locales -- http://localhost:8787
+```
+
+## Deploying to Cloudflare Workers
+
+The site runs on Cloudflare Workers through the OpenNext adapter.
+
+```bash
+npm run preview     # build + serve in the real Workers runtime (workerd)
+npm run deploy      # build + deploy to your Cloudflare account
+npm run upload      # build + upload a version without promoting it
+```
+
+The Cloudflare configuration is committed rather than generated, so it cannot
+drift between builds:
+
+| File | Purpose |
+|---|---|
+| `wrangler.jsonc` | The Worker itself — name, entry point, assets, compatibility flags |
+| `open-next.config.ts` | Adapter settings; the read-only static-assets cache, since nothing revalidates |
+| `public/_headers` | Long-lived cache headers for the hashed build assets |
+| `.dev.vars` | Local-only variables for `next dev`; gitignored |
+
+**The Worker name must match in three places:** the `name` in `wrangler.jsonc`,
+the `service` of the `WORKER_SELF_REFERENCE` binding, and the Worker in the
+Cloudflare dashboard. If they diverge, the deploy fails with
+`Service binding 'WORKER_SELF_REFERENCE' references Worker '…' which was not
+found [code: 10143]`.
+
+This project deliberately has **no `WORKER_SELF_REFERENCE` binding**. The
+self-reference is only used by the Durable Object queue and by the Pages Router
+`res.revalidate` patch, and MouseLab needs neither — every route is
+prerendered and never revalidated. It also cannot work on a first deploy: the
+binding names the Worker that is being created, and Wrangler resolves service
+bindings against Workers that already exist, so the first build fails and the
+Worker never gets created.
+
+**Connecting a GitHub repository.** Cloudflare's Workers Builds can build and
+deploy on every push:
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx opennextjs-cloudflare deploy`
+- Root directory: `/`
+
+Set the Worker name in the dashboard to `mouselab` so it matches
+`wrangler.jsonc`.
+
+**One thing to know about 404s.** With Cache Components, routes are partially
+prerendered: the static shell — and the `200` status line that arrives with
+it — is on the wire before the page component runs. A `notFound()` raised that
+late can no longer change the status, so an unknown tool URL would answer
+`200` with a not-found page: a soft 404. `src/proxy.ts` therefore checks the
+tool slug before the request reaches the route and rewrites unknown ones to
+the catch-all, which is not prerendered and so answers a real `404` — with the
+not-found page still in the visitor's language.
 
 ## Stack
 
@@ -33,7 +91,7 @@ The three `verify`/`sweep` scripts expect a server on `http://localhost:3000`.
 | Styling | Tailwind CSS v4 (`@theme` tokens in `src/app/globals.css`) |
 | Type | Ubuntu Sans Variable, self-hosted from `/public/fonts` |
 | Rendering | Every route prerendered as static HTML |
-| Hosting target | Cloudflare Workers via OpenNext |
+| Hosting | Cloudflare Workers via `@opennextjs/cloudflare` |
 
 ## Internationalisation
 

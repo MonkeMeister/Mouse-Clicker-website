@@ -2,6 +2,15 @@ import { getContent } from "@/content/registry";
 import type { ToolContent } from "@/content/types";
 import { localePath, type Locale } from "@/lib/i18n";
 
+/**
+ * Slugs of every tool, independent of language.
+ *
+ * Re-exported from the content contract rather than declared here, so the
+ * proxy can check a slug without pulling the whole content registry into the
+ * middleware bundle.
+ */
+export { TOOL_SLUGS } from "@/content/types";
+
 /** Every tool page for one locale, in display order. */
 export function getTools(locale: Locale): ToolContent[] {
   const { toolPages } = getContent(locale);
@@ -25,12 +34,3 @@ export function getToolNav(locale: Locale) {
 export function getToolCategories(locale: Locale) {
   return Array.from(new Set(getTools(locale).map((tool) => tool.category)));
 }
-
-/** Slugs of every tool, independent of language. */
-export const TOOL_SLUGS = [
-  "mouse-test",
-  "scroll-test",
-  "keyboard-test",
-  "cps-test",
-  "polling-rate-test",
-] as const;

@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "mouselab",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": [
+    // Enable Node.js APIs, required by @opennextjs/cloudflare.
+    "nodejs_compat",
+    // Let the Worker fetch URLs outside its own zone.
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+
+  // No WORKER_SELF_REFERENCE service binding on purpose.
+  //
+  // The self-reference is only used by the Durable Object queue and by the
+  // Pages Router `res.revalidate` patch. MouseLab is an App Router site whose
+  // every route is prerendered and never revalidated, so it needs neither.
+  //
+  // It also cannot work on a first deploy: the binding names the Worker that
+  // is being created, and Wrangler resolves service bindings against Workers
+  // that already exist, so the very first build fails with
+  // "Service binding 'WORKER_SELF_REFERENCE' references Worker 'mouselab'
+  // which was not found [code: 10143]" and the Worker never gets created.
+}
