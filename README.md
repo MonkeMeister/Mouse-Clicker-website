@@ -151,7 +151,8 @@ so `src/app/[locale]/not-found.tsx` is a client component that reads the locale
 from the router and picks its copy out of `src/content/notFoundCopy.ts`. It is
 deliberately not a server component reading a request header: reading headers
 opts the boundary into dynamic rendering, the response is flushed before the
-404 status is known, and a real 404 becomes a soft 404.
+404 status is known, and a real 404 becomes a soft 404. `src/proxy.ts` decides
+which URLs are missing at routing level, so the status is always a real 404.
 
 ## Layout
 
@@ -178,8 +179,12 @@ src/
 │   ├── seo.ts             hreflang and canonical helpers
 │   ├── tools.ts           tool registry
 │   └── site.ts            site name, URL, build year
-├── proxy.ts               locale rewrite / redirect
+├── proxy.ts               locale rewrite / redirect, and the 404 routing
 └── scripts/verify-logic.ts   the test suite
+
+wrangler.jsonc            the Cloudflare Worker
+open-next.config.ts       the OpenNext adapter settings
+public/_headers           cache headers for the hashed build assets
 ```
 
 ## Adding a tool
