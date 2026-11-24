@@ -90,18 +90,23 @@ The site is funded by Google AdSense. The publisher ID lives in `src/lib/site.ts
 export const ADSENSE = {
   client: "ca-pub-9908657950336504",
   slots: {
-    leaderboard: "",
-    rectangle: "",
+    leaderboard: "8407273822",
+    rectangle: "7094192153",
   },
   autoAds: false,
 } as const;
 ```
 
-**Slot IDs have to be filled in before ads will show.** Every ad unit in the
-AdSense dashboard has its own ID. Paste the matching one into `slots` and that
-placement starts serving a real ad; a placement whose slot ID is still empty
-keeps rendering the neutral placeholder, so a missing ID never leaves a broken
-frame on the page.
+The two slot IDs are the ad units in the AdSense dashboard, both responsive
+display units:
+
+| Placement | Slot ID | Where it renders |
+|---|---|---|
+| `leaderboard` | `8407273822` | Below the tool on a tool page, below the hero on the home page |
+| `rectangle` | `7094192153` | Mid-page on a tool page, below the article body on a blog post |
+
+A placement whose slot ID is empty renders the neutral placeholder instead, so a
+missing ID never leaves a broken frame on the page.
 
 **The script is loaded on the first interaction, not on page load.**
 `src/components/AdSenseLoader.tsx` waits for a `pointerdown`, `keydown`,
@@ -112,17 +117,26 @@ matches what the privacy policy tells visitors.
 **Auto ads are off by default.** `autoAds: true` adds `data-ad-client` to the
 `<body>`, which lets Google place units wherever it likes. MouseLab places its
 own units deliberately, so turn it on only if you want automatic placements as
-well as the manual ones.
+well as the manual ones. Auto ads are also off in the AdSense dashboard.
 
-**`public/ads.txt` is commented out on purpose.** AdSense requires the file at
-the root of the domain, but an incorrect record can stop ads from serving
-entirely. Open AdSense → Account → Summary → ads.txt, copy the exact line for
-your account, and replace the commented line in `public/ads.txt`.
+**`public/ads.txt` carries the certified record.**
+
+```
+google.com, pub-9908657950336504, DIRECT, f08c47fec0942fa0
+```
+
+That line came from AdSense → Sites → `mouselab.io` → Verify site ownership →
+Ads.txt snippet. Do not change it: an incorrect or missing record can stop ads
+from serving entirely.
 
 Two things have to be done in the AdSense dashboard, not in the repository:
 
-- **Approve the domain.** `mouselab.io` has to be verified in the AdSense
-  account before ads are served.
+- **Verify the site and request review.** `mouselab.io` is added but still sits
+  at "Requires review". AdSense offers three verification methods: the AdSense
+  code snippet, an ads.txt record, or a meta tag. The code snippet method
+  wants Google's script between `<head>` and `</head>`, which the on-interaction
+  loader does not do, so verify with ads.txt or the meta tag instead:
+  `<meta name="google-adsense-account" content="ca-pub-9908657950336504">`.
 - **Set up a certified CMP.** For visitors in the EEA, the UK and Switzerland,
   Google requires a certified consent manager. Google provides one free through
   AdSense (Privacy & messaging → European regulations → Funding Choices), and

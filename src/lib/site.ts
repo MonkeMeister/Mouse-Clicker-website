@@ -29,9 +29,9 @@ export const ADSENSE = {
   client: "ca-pub-9908657950336504",
   slots: {
     /** Wide unit, used below the tool and above the fold of long pages. */
-    leaderboard: "",
+    leaderboard: "8407273822",
     /** Large rectangle, used mid-article and below the article body. */
-    rectangle: "",
+    rectangle: "7094192153",
   },
   /**
    * Auto ads let Google place units wherever it likes on the page.

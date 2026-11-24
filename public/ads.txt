@@ -4,13 +4,11 @@
 # Google AdSense requires it, and it must be served from the root of the
 # domain over HTTPS.
 #
-# The line below is the standard Google AdSense record for publisher
-# ca-pub-9908657950336504. Before the account goes live, open
-# AdSense > Account > Summary > ads.txt and copy the exact line from there,
-# because Google issues the certification ID for your account and it can
-# differ from the placeholder below.
+# The record below is the certified Google AdSense line for publisher
+# ca-pub-9908657950336504, taken from AdSense > Sites > mouselab.io >
+# Verify site ownership > Ads.txt snippet.
 #
-# It is left commented out on purpose: an incorrect record can stop ads from
-# serving at all, so paste the verified line in and uncomment it.
+# Do not change it. An incorrect or missing record can stop ads from serving
+# entirely.
 
-# google.com, pub-9908657950336504, DIRECT, f08c47fec0942fa0
+google.com, pub-9908657950336504, DIRECT, f08c47fec0942fa0
