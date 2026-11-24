@@ -88,7 +88,29 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/|api/|favicon\\.ico|icon\\.svg|robots\\.txt|sitemap\\.xml|.*\\..*).*)",
-  ],
+  /*
+   * Only the routes that have to reach Next untouched are excluded.
+   *
+   * Everything else goes through the proxy, including paths that contain a
+   * dot and paths under `/api`. Those paths used to be excluded, which left
+   * them to the Next.js router at runtime: an unknown path such as
+   * `/.env` or `/favicon.ico` has no prerendered entry, so the router had to
+   * render a response on the fly, and that render never settles on the
+   * Workers runtime. Cloudflare gave up on the request and answered with
+   * error 1101 ("Worker threw exception") instead of a 404.
+   *
+   * Routing them through the proxy fixes that: the path is rewritten to a
+   * locale-prefixed URL, which the prerendered catch-all answers with a real
+   * 404. `/favicon.ico` is the one that mattered most, because every browser
+   * asks for it on every page view.
+   *
+   * The excluded paths are the ones Next serves itself:
+   *   - `robots.txt` and `sitemap.xml` are route handlers;
+   *   - `icon.svg` and `favicon.ico` are the app's icon metadata routes.
+   *
+   * Files under `public/` (ads.txt, the fonts, the other icons) and the
+   * framework's own `/_next/` files are answered by the static asset binding
+   * before the Worker is reached, so they never reach the proxy at all.
+   */
+  matcher: ["/((?!favicon\\.ico|icon\\.svg|robots\\.txt|sitemap\\.xml).*)"],
 };

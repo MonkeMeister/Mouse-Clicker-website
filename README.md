@@ -82,6 +82,42 @@ the tool and post slug before the request reaches the route and rewrites
 unknown ones to the catch-all, which is not prerendered and so answers a real
 `404` — with the not-found page still in the visitor's language.
 
+**Every path has to go through the proxy.** The proxy matcher excludes only the
+routes Next serves itself (`robots.txt`, `sitemap.xml`, `icon.svg` and
+`favicon.ico`). Everything else — including paths that contain a dot and paths
+under `/api` — is rewritten to a locale-prefixed URL first, so an unknown path
+lands on the prerendered catch-all and answers a real `404`.
+
+That exclusion matters because of how the Workers runtime behaves. A path with
+no prerendered entry has to be rendered on the fly, and a runtime render of the
+root `/_not-found` never settles on workerd: Cloudflare gives up on the request
+and answers **error 1101, "Worker threw exception"**, instead of a 404. Routing
+those paths through the proxy keeps them off that code path entirely.
+
+**The `cookie` package is pinned.** `package.json` carries an npm `override` for
+`cookie`, which OpenNext uses to parse the incoming cookie header.
+
+```json
+"overrides": { "cookie": "0.7.2" }
+```
+
+From `cookie@1.0.0` onwards the package is compiled from TypeScript and its
+CommonJS entry point sets `__esModule: true`. esbuild's `__toESM` interop then
+skips the `default` export for such a module, so OpenNext's
+`cookieParser.parse(cookieHeader)` reads `.default` of `undefined` and throws.
+The result is a `TypeError` on **every request that carries a `Cookie` header**
+— which is every request from a real browser, and none of them from `curl`.
+That is Cloudflare error 1101 again, on the site itself rather than on a stray
+URL. `cookie@0.7.2` is plain CommonJS without the `__esModule` marker, so the
+interop behaves as OpenNext expects.
+
+**Deploy with `opennextjs-cloudflare deploy`, not `wrangler deploy`.** The
+read-only incremental cache is stored as Worker static assets under
+`cdn-cgi/_next_cache/<build id>/`, and the copy that puts it there is part of
+the `populateCache` step, not the build step. A plain `wrangler deploy` ships
+the Worker without those assets, so every request misses the cache and has to be
+rendered on the fly — slow, and with the 404 problem above.
+
 ## Advertising
 
 The site is funded by Google AdSense. The publisher ID lives in `src/lib/site.ts`:
