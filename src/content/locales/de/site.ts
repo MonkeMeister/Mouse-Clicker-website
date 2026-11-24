@@ -222,7 +222,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Inhalte von Drittanbietern",
-      body: "Werbeskripte werden erst geladen, wenn Sie mit der Seite interagieren. So laufen sie nicht, bevor Sie irgendein Zeichen von Interesse gezeigt haben. Schriften werden von unserer eigenen Domain ausgeliefert, beim Öffnen einer Seite erfolgt also keine Anfrage bei einem Schriftarten-Anbieter.",
+      body: "Das Werbeskript kommt von Google und wird geladen, sobald Sie eine Seite öffnen. Es lädt asynchron, sodass es weder die Seite noch das Testen blockiert. Schriften werden von unserer eigenen Domain ausgeliefert, beim Öffnen einer Seite erfolgt also keine Anfrage bei einem Schriftarten-Anbieter.",
     },
     {
       heading: "Kontakt",

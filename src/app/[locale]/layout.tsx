@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { AdSenseLoader } from "@/components/AdSenseLoader";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { getContent } from "@/content/registry";
@@ -92,6 +91,28 @@ export default async function LocaleLayout({
 
   return (
     <html lang={LOCALE_BY_CODE[locale].hreflang} dir={LOCALE_BY_CODE[locale].dir} className="h-full">
+      <head>
+        {/*
+          Google AdSense.
+
+          This is Google's own snippet, unmodified, and it is rendered into the
+          HTML the server actually sends. That is not a stylistic choice:
+          AdSense's site verification and site review look for the snippet in
+          the raw HTML, and the AdSense crawler never scrolls or clicks, so a
+          script injected by JavaScript after the page has loaded is invisible
+          to it.
+
+          It is written out literally rather than through `next/script`,
+          because Next.js would add a `data-nscript` attribute and AdSense
+          rejects any `data-*` attribute on this tag. The tag is `async`, so
+          it never blocks rendering or the tester.
+        */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE.client}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className="flex min-h-full flex-col"
         data-ad-client={ADSENSE.autoAds ? ADSENSE.client : undefined}
@@ -107,8 +128,6 @@ export default async function LocaleLayout({
           {children}
         </div>
         <Footer locale={locale} ui={content.ui} tools={tools} />
-        {/* The advertising script is injected on the first interaction. */}
-        <AdSenseLoader client={ADSENSE.client} />
       </body>
     </html>
   );

@@ -108,11 +108,14 @@ display units:
 A placement whose slot ID is empty renders the neutral placeholder instead, so a
 missing ID never leaves a broken frame on the page.
 
-**The script is loaded on the first interaction, not on page load.**
-`src/components/AdSenseLoader.tsx` waits for a `pointerdown`, `keydown`,
-`touchstart`, `wheel` or `scroll` before injecting Google's script. That keeps
-the third-party request off the critical path, so the tools stay fast, and it
-matches what the privacy policy tells visitors.
+**The script is loaded up front, in the `<head>`.**
+`src/app/[locale]/layout.tsx` renders Google's own snippet with
+`next/script` and `strategy="beforeInteractive"`, so it is in the HTML the
+server actually sends. That is not a stylistic choice: AdSense's site
+verification and site review look for the snippet in the raw HTML, and the
+AdSense crawler never scrolls or clicks, so a script injected by JavaScript
+after the page loads is invisible to it. The tag is Google's snippet
+unmodified and `async`, so it never blocks rendering or the tester.
 
 **Auto ads are off by default.** `autoAds: true` adds `data-ad-client` to the
 `<body>`, which lets Google place units wherever it likes. MouseLab places its
@@ -133,10 +136,10 @@ Two things have to be done in the AdSense dashboard, not in the repository:
 
 - **Verify the site and request review.** `mouselab.io` is added but still sits
   at "Requires review". AdSense offers three verification methods: the AdSense
-  code snippet, an ads.txt record, or a meta tag. The code snippet method
-  wants Google's script between `<head>` and `</head>`, which the on-interaction
-  loader does not do, so verify with ads.txt or the meta tag instead:
-  `<meta name="google-adsense-account" content="ca-pub-9908657950336504">`.
+  code snippet, an ads.txt record, or a meta tag. The snippet is now in the
+  `<head>` of every page, so that method works; `public/ads.txt` is published
+  too, so the ads.txt method works as well. Pick one, tick the box, verify,
+  then request the review.
 - **Set up a certified CMP.** For visitors in the EEA, the UK and Switzerland,
   Google requires a certified consent manager. Google provides one free through
   AdSense (Privacy & messaging → European regulations → Funding Choices), and
@@ -145,7 +148,9 @@ Two things have to be done in the AdSense dashboard, not in the repository:
 **What the copy promises.** The site claims that measurement data never leaves
 the browser, which stays true: AdSense never sees your clicks. The footer, the
 hero and the meta description all scope that claim to the measurements, and
-the privacy policy names Google AdSense and the opt-out routes.
+the privacy policy names Google AdSense and the opt-out routes. The privacy
+policy also says the advertising script is loaded as soon as a page opens and
+loads asynchronously, which is exactly what the code does.
 
 ## Stack
 
@@ -235,7 +240,6 @@ src/
 │   ├── LanguageSelector.tsx  globe switcher, keeps the reader on the page
 │   ├── ToolPage.tsx       the shared tool-page template
 │   ├── AdSlot.tsx         the ad unit, with a placeholder fallback
-│   ├── AdSenseLoader.tsx  injects Google's script on the first interaction
 │   ├── RelatedTools.tsx JsonLd.tsx
 │   ├── views/             one view component per page type
 │   └── tools/             one client component per diagnostic

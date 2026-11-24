@@ -222,7 +222,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Third-party content",
-      body: "Advertising scripts are only loaded once you interact with the page, which keeps them from running before you have shown any sign of engagement. Fonts are served from our own domain, so no request to a font provider is made when you open a page.",
+      body: "The advertising script comes from Google, and it is loaded as soon as a page opens. It loads asynchronously, so it never blocks the page or the tester. Fonts are served from our own domain, so no request to a font provider is made when you open a page.",
     },
     {
       heading: "Contact",

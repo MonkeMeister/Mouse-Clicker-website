@@ -222,7 +222,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Contenido de terceros",
-      body: "Los scripts publicitarios solo se cargan cuando interactúas con la página, lo que evita que se ejecuten antes de que hayas mostrado ninguna señal de interés. Las fuentes se sirven desde nuestro propio dominio, así que al abrir una página no se hace ninguna petición a un proveedor de fuentes.",
+      body: "El script publicitario viene de Google y se carga en cuanto abres una página. Se carga de forma asíncrona, así que nunca bloquea la página ni la prueba que estás haciendo. Las fuentes se sirven desde nuestro propio dominio, así que al abrir una página no se hace ninguna petición a un proveedor de fuentes.",
     },
     {
       heading: "Contacto",

@@ -222,7 +222,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Treści zewnętrzne",
-      body: "Skrypty reklamowe wczytują się dopiero po interakcji ze stroną, więc nie działają, zanim użytkownik wykaże jakiekolwiek zainteresowanie. Czcionki są serwowane z własnej domeny, więc otwierając stronę, nie wysyłane są żadne zapytania do dostawcy czcionek.",
+      body: "Skrypt reklamowy pochodzi od Google i wczytuje się od razu po otwarciu strony. Wczytuje się asynchronicznie, więc nigdy nie blokuje strony ani testera. Czcionki są serwowane z własnej domeny, więc otwierając stronę, nie wysyłane są żadne zapytania do dostawcy czcionek.",
     },
     {
       heading: "Kontakt",

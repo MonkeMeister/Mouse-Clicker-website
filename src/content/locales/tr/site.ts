@@ -222,7 +222,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Üçüncü taraf içerik",
-      body: "Reklam betikleri yalnızca sayfayla etkileşime girdiğinizde yüklenir; böylece herhangi bir ilgi belirtisinden önce çalışmazlar. Yazı tipleri kendi alan adımızdan sunulur, dolayısıyla bir sayfayı açtığınızda yazı tipi sağlayıcısına hiçbir istek gönderilmez.",
+      body: "Reklam betiği Google'dan gelir ve sayfa açılır açılmaz yüklenir. Asenkron olarak yüklendiği için ne sayfayı ne de testi engellemez. Yazı tipleri kendi alan adımızdan sunulur, dolayısıyla bir sayfayı açtığınızda yazı tipi sağlayıcısına hiçbir istek gönderilmez.",
     },
     {
       heading: "İletişim",
