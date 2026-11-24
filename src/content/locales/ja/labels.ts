@@ -129,7 +129,7 @@ export const toolUi: ToolUiLabels = {
     },
     verdictUnstable: {
       title: "{hz} Hz 前後で値が安定しません",
-      body: "レートが標準値に収束していません。ワイヤレスの干渉や、バッテリー残量の低下が原因の 경우가ほとんどです。",
+      body: "レートが標準値に収束していません。ワイヤレスの干渉や、バッテリー残量の低下が原因の場合がほとんどです。",
     },
     verdictOk: {
       title: "およそ {hz} Hz で報告しています",
