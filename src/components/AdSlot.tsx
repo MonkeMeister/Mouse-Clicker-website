@@ -55,8 +55,14 @@ export function AdSlot({
          * The space is reserved with a minimum rather than a fixed height, so
          * a taller ad grows the slot instead of being clipped by the rounded
          * corners.
+         *
+         * The label stays visible next to a real unit, so advertising is
+         * always marked as such rather than blending into the page.
          */
-        <div className={`flex w-full items-center justify-center ${minHeight}`}>
+        <div className={`flex w-full flex-col ${minHeight}`}>
+          <span className="px-3 pt-2 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-400">
+            {label}
+          </span>
           <ins
             className="adsbygoogle block w-full"
             style={{ display: "block" }}

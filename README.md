@@ -278,8 +278,10 @@ first thing on the page. Ad slots sit after the result the user came for —
 never above it. This is the main structural difference from the reference
 site, which places its ad above the tool on every page.
 
-**One ad slot above the content, one below.** Two slots per page, both
-placeholdered in `AdSlot.tsx` until the AdSense account is live.
+**Two ad slots per page, both below the content.** A `leaderboard` unit below the
+tester and a `rectangle` unit further down the page. `AdSlot.tsx` still falls
+back to a neutral placeholder for any placement whose slot ID is empty, so a
+missing ID never leaves a broken frame.
 
 **Schema on every tool page.** `WebPage`, `SoftwareApplication`, `FAQPage` and
 `BreadcrumbList` are emitted together by `ToolPage.tsx`.
