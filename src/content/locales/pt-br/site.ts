@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — Testes grátis no navegador para mouse, teclado e ponteiro",
   metaDescription:
-    "Teste todos os botões, a rodinha, as teclas e a taxa de clique direto no navegador. Grátis, sem cadastro, sem download e sem que nenhum dado saia do seu dispositivo.",
+    "Teste todos os botões, a rodinha, as teclas e a taxa de clique direto no navegador. Grátis, sem cadastro, sem download. Suas medições nunca saem do navegador.",
   badge: "Roda inteiramente no seu navegador",
   heroTitleBefore: "Descubra exatamente o que o seu",
   heroTitleHighlight: "mouse e teclado",
   heroTitleAfter: "realmente fazem.",
   heroSubtitle:
-    "Cinco diagnósticos grátis que leem os eventos que o seu computador realmente recebe — cada botão, cada direção da rolagem, cada tecla e a velocidade real do seu ponteiro. Sem download, sem cadastro e sem que nada saia do seu dispositivo.",
+    "Cinco diagnósticos grátis que leem os eventos que o seu computador realmente recebe — cada botão, cada direção da rolagem, cada tecla e a velocidade real do seu ponteiro. Sem download, sem cadastro, e cada medição fica no seu navegador.",
   ctaPrimary: "Teste seu mouse agora",
   ctaSecondary: "Ver todas as ferramentas",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Publicidade",
-      body: "Este site é financiado por publicidade. Os parceiros de anúncios podem definir cookies ou usar tecnologias semelhantes para exibir e medir anúncios. Você pode controlar como a publicidade personalizada é usada pelas configurações do navegador e pelas opções oferecidas pelo Google para Google Ads, pela página Privacidade e Termos do Google e pelo aboutads.info para os terceiros participantes.",
+      body: "Este site é financiado por publicidade, e usamos o Google AdSense para exibir os anúncios. O Google e seus parceiros podem definir cookies ou usar tecnologias semelhantes para exibir e medir anúncios. Você pode controlar como a publicidade personalizada é usada pelas configurações do seu navegador, pela página Google's Ads Settings e pelas opções que o Google oferece para o Google Advertising, pela página Privacidade e Termos do Google e pelo aboutads.info para os terceiros participantes.",
     },
     {
       heading: "Conteúdo de terceiros",

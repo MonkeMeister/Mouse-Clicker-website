@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Empresa",
     privacyPolicy: "Política de privacidad",
     blurb:
-      "Prueba todos los botones, la rueda, las teclas y la velocidad de clic directamente en tu navegador. Gratis, sin registro, sin descargas y sin que ningún dato salga de tu dispositivo. Cada test se ejecuta localmente en tu navegador: no se descarga nada y no se sube nada.",
+      "Prueba todos los botones, la rueda, las teclas y la velocidad de clic directamente en tu navegador. Gratis, sin registro y sin instalar nada. Cada medición se cuenta en tu navegador y nunca sale de él. Este sitio se financia con publicidad, y la política de privacidad explica qué significa eso.",
     disclaimer:
       "Todas las mediciones se obtienen a partir de eventos estándar del navegador. Los resultados describen lo que tu equipo recibió, no el estado interno de tu hardware.",
     rights: "© {year} {brand}. Todos los derechos reservados.",

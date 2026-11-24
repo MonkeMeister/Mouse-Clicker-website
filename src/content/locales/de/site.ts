@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — Kostenlose Browser-Diagnosen für Maus, Tastatur und Zeigergerät.",
   metaDescription:
-    "Testen Sie jede Taste, jedes Scrollrad, jede Tastaturtaste und Ihre Klickrate direkt im Browser. Kostenlos, ohne Anmeldung, ohne Download und ohne dass Daten Ihr Gerät verlassen.",
+    "Testen Sie jede Taste, jedes Scrollrad, jede Tastaturtaste und Ihre Klickrate direkt im Browser. Kostenlos, ohne Anmeldung, ohne Download. Ihre Messungen verlassen den Browser nie.",
   badge: "Läuft vollständig in Ihrem Browser",
   heroTitleBefore: "Finden Sie heraus, was Ihre",
   heroTitleHighlight: "Maus und Tastatur",
   heroTitleAfter: "tatsächlich tun.",
   heroSubtitle:
-    "Fünf kostenlose Diagnosen, die die Events auslesen, die Ihr Computer tatsächlich empfängt — jede Maustaste, jede Richtung des Scrollrads, jede Tastaturtaste und die echte Geschwindigkeit Ihres Zeigers. Ohne Download, ohne Anmeldung, und nichts verlässt Ihr Gerät.",
+    "Fünf kostenlose Diagnosen, die die Events auslesen, die Ihr Computer tatsächlich empfängt — jede Maustaste, jede Richtung des Scrollrads, jede Tastaturtaste und die echte Geschwindigkeit Ihres Zeigers. Ohne Download, ohne Anmeldung, und jede Messung bleibt in Ihrem Browser.",
   ctaPrimary: "Maus jetzt testen",
   ctaSecondary: "Alle Tools ansehen",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Werbung",
-      body: "Diese Seite wird durch Werbung finanziert. Werbepartner können Cookies setzen oder ähnliche Technologien einsetzen, um Anzeigen auszuliefern und zu messen. Sie können über Ihre Browser-Einstellungen und über die Optionen von Google für Google Ads, die Datenschutz- und Nutzungsbedingungen von Google sowie aboutads.info für beteiligte Drittanbieter steuern, wie personalisierte Werbung eingesetzt wird.",
+      body: "Diese Seite wird durch Werbung finanziert, und wir setzen dafür Google AdSense ein. Google und seine Partner können Cookies setzen oder ähnliche Technologien verwenden, um Anzeigen auszuliefern und zu messen. Sie können steuern, wie personalisierte Werbung eingesetzt wird: über Ihre Browser-Einstellungen, über Google's Ads Settings sowie über die Optionen, die Google für Google Advertising, für seine Datenschutz- und Nutzungsbedingungen und auf aboutads.info für beteiligte Drittanbieter bereitstellt.",
     },
     {
       heading: "Inhalte von Drittanbietern",

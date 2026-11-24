@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Company",
     privacyPolicy: "Privacy policy",
     blurb:
-      "Test every button, wheel, key and click rate directly in your browser. Free, no signup, nothing downloaded and no data leaves your device. Every test runs locally in your browser — nothing is downloaded, nothing is uploaded.",
+      "Test every button, wheel, key and click rate directly in your browser. Free, no signup, nothing downloaded. Every measurement is counted in your browser and never leaves it. This site is funded by advertising, and the privacy policy explains what that means.",
     disclaimer:
       "All measurements are taken from standard browser events. Results describe what your computer received, not the internal state of your hardware.",
     rights: "© {year} {brand}. All rights reserved.",

@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Şirket",
     privacyPolicy: "Gizlilik politikası",
     blurb:
-      "Her tuşu, tekerleği, tuş takımını ve tıklama hızını doğrudan tarayıcınızda test edin. Ücretsiz, üyelik gerekmez, hiçbir şey indirilmez ve verileriniz cihazınızdan çıkmaz. Her test tarayıcınızda yerel olarak çalışır — hiçbir şey indirilmez, hiçbir şey yüklenmez.",
+      "Her tuşu, tekerleği, klavye tuşunu ve tıklama hızını doğrudan tarayıcınızda test edin. Ücretsiz, üyelik gerekmez, hiçbir şey indirilmez. Her ölçüm tarayıcınızda sayılır ve tarayıcınızdan hiç çıkmaz. Bu site reklamlarla finanse edilir ve bunun ne anlama geldiğini gizlilik politikası açıklıyor.",
     disclaimer:
       "Tüm ölçümler standart tarayıcı olaylarından alınır. Sonuçlar, donanımınızın iç durumunu değil, bilgisayarınızın ne aldığını gösterir.",
     rights: "© {year} {brand}. Tüm hakları saklıdır.",

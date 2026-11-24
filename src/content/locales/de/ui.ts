@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Unternehmen",
     privacyPolicy: "Datenschutzerklärung",
     blurb:
-      "Testen Sie jede Taste, jedes Scrollrad, jede Tastaturtaste und Ihre Klickrate direkt im Browser. Kostenlos, ohne Anmeldung, ohne Download und ohne dass Daten Ihr Gerät verlassen. Jeder Test läuft lokal in Ihrem Browser — es wird nichts heruntergeladen und nichts hochgeladen.",
+      "Testen Sie jede Taste, jedes Scrollrad, jede Tastaturtaste und Ihre Klickrate direkt im Browser. Kostenlos, ohne Anmeldung, ohne Download. Jede Messung wird in Ihrem Browser gezählt und verlässt ihn nie. Diese Seite wird durch Werbung finanziert, und die Datenschutzerklärung erklärt, was das bedeutet.",
     disclaimer:
       "Alle Messungen stammen aus standardmäßigen Browser-Events. Die Ergebnisse beschreiben, was Ihr Computer empfangen hat, nicht den internen Zustand Ihrer Hardware.",
     rights: "© {year} {brand}. Alle Rechte vorbehalten.",

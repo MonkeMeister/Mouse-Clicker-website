@@ -82,6 +82,57 @@ the tool and post slug before the request reaches the route and rewrites
 unknown ones to the catch-all, which is not prerendered and so answers a real
 `404` — with the not-found page still in the visitor's language.
 
+## Advertising
+
+The site is funded by Google AdSense. The publisher ID lives in `src/lib/site.ts`:
+
+```ts
+export const ADSENSE = {
+  client: "ca-pub-9908657950336504",
+  slots: {
+    leaderboard: "",
+    rectangle: "",
+  },
+  autoAds: false,
+} as const;
+```
+
+**Slot IDs have to be filled in before ads will show.** Every ad unit in the
+AdSense dashboard has its own ID. Paste the matching one into `slots` and that
+placement starts serving a real ad; a placement whose slot ID is still empty
+keeps rendering the neutral placeholder, so a missing ID never leaves a broken
+frame on the page.
+
+**The script is loaded on the first interaction, not on page load.**
+`src/components/AdSenseLoader.tsx` waits for a `pointerdown`, `keydown`,
+`touchstart`, `wheel` or `scroll` before injecting Google's script. That keeps
+the third-party request off the critical path, so the tools stay fast, and it
+matches what the privacy policy tells visitors.
+
+**Auto ads are off by default.** `autoAds: true` adds `data-ad-client` to the
+`<body>`, which lets Google place units wherever it likes. MouseLab places its
+own units deliberately, so turn it on only if you want automatic placements as
+well as the manual ones.
+
+**`public/ads.txt` is commented out on purpose.** AdSense requires the file at
+the root of the domain, but an incorrect record can stop ads from serving
+entirely. Open AdSense → Account → Summary → ads.txt, copy the exact line for
+your account, and replace the commented line in `public/ads.txt`.
+
+Two things have to be done in the AdSense dashboard, not in the repository:
+
+- **Approve the domain.** `mouselab.io` has to be verified in the AdSense
+  account before ads are served.
+- **Set up a certified CMP.** For visitors in the EEA, the UK and Switzerland,
+  Google requires a certified consent manager. Google provides one free through
+  AdSense (Privacy & messaging → European regulations → Funding Choices), and
+  it handles the consent banner in every language the site ships.
+
+**What the copy promises.** The site claims that measurement data never leaves
+the browser, which stays true: AdSense never sees your clicks. The footer, the
+hero and the meta description all scope that claim to the measurements, and
+the privacy policy names Google AdSense and the opt-out routes.
+
 ## Stack
 
 | Layer | Choice |
@@ -169,7 +220,9 @@ src/
 │   ├── Header.tsx Footer.tsx Logo.tsx Container.tsx
 │   ├── LanguageSelector.tsx  globe switcher, keeps the reader on the page
 │   ├── ToolPage.tsx       the shared tool-page template
-│   ├── AdSlot.tsx RelatedTools.tsx JsonLd.tsx
+│   ├── AdSlot.tsx         the ad unit, with a placeholder fallback
+│   ├── AdSenseLoader.tsx  injects Google's script on the first interaction
+│   ├── RelatedTools.tsx JsonLd.tsx
 │   ├── views/             one view component per page type
 │   └── tools/             one client component per diagnostic
 ├── content/               long-form copy + FAQ, per language
@@ -180,13 +233,14 @@ src/
 │   ├── seo.ts             hreflang and canonical helpers
 │   ├── tools.ts           tool registry
 │   ├── blog.ts            blog registry, post slugs and the publish date
-│   └── site.ts            site name, URL, build year
+│   └── site.ts            site name, URL, build year, AdSense config
 ├── proxy.ts               locale rewrite / redirect, and the 404 routing
 └── scripts/verify-logic.ts   the test suite
 
 wrangler.jsonc            the Cloudflare Worker
 open-next.config.ts       the OpenNext adapter settings
 public/_headers           cache headers for the hashed build assets
+public/ads.txt            the AdSense seller record for the root domain
 ```
 
 ## Adding a tool

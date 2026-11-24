@@ -1,0 +1,16 @@
+# ads.txt for MouseLab — https://mouselab.io/ads.txt
+#
+# This file tells advertisers who is allowed to serve ads on this domain.
+# Google AdSense requires it, and it must be served from the root of the
+# domain over HTTPS.
+#
+# The line below is the standard Google AdSense record for publisher
+# ca-pub-9908657950336504. Before the account goes live, open
+# AdSense > Account > Summary > ads.txt and copy the exact line from there,
+# because Google issues the certification ID for your account and it can
+# differ from the placeholder below.
+#
+# It is left commented out on purpose: an incorrect record can stop ads from
+# serving at all, so paste the verified line in and uncomment it.
+
+# google.com, pub-9908657950336504, DIRECT, f08c47fec0942fa0

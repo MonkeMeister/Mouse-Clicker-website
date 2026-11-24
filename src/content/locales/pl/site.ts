@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — bezpłatna diagnostyka myszy, klawiatury i wskaźnika w przeglądarce.",
   metaDescription:
-    "Sprawdź bezpośrednio w przeglądarce każdy przycisk, kółko, klawisz i częstotliwość kliknięć. Za darmo, bez rejestracji, bez pobierania i bez wysyłania danych z urządzenia.",
+    "Sprawdź bezpośrednio w przeglądarce każdy przycisk, kółko, klawisz i częstotliwość kliknięć. Za darmo, bez rejestracji, bez pobierania. Twoje pomiary nigdy nie opuszczają przeglądarki.",
   badge: "Działa w całości w przeglądarce",
   heroTitleBefore: "Dowiedz się, co naprawdę dzieje się z",
   heroTitleHighlight: "myszą i klawiaturą",
   heroTitleAfter: ".",
   heroSubtitle:
-    "Pięć bezpłatnych narzędzi diagnostycznych, które odczytują zdarzenia faktycznie docierające do komputera — każdy przycisk, każdy kierunek kółka, każdy klawisz i realną szybkość wskaźnika. Bez pobierania, bez rejestracji i bez wysyłania czegokolwiek z urządzenia.",
+    "Pięć bezpłatnych narzędzi diagnostycznych, które odczytują zdarzenia faktycznie docierające do komputera — każdy przycisk, każdy kierunek kółka, każdy klawisz i realną szybkość wskaźnika. Bez pobierania, bez rejestracji, a każdy pomiar pozostaje w przeglądarce.",
   ctaPrimary: "Przetestuj myszkę już teraz",
   ctaSecondary: "Zobacz wszystkie narzędzia",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Reklamy",
-      body: "Ta strona finansowana jest reklamami. Partnerzy reklamowi mogą ustawiać pliki cookie lub korzystać z podobnych technologii, aby serwować i mierzyć reklamy. Sposób wykorzystania reklam spersonalizowanych można kontrolować w ustawieniach przeglądarki, a także za pośrednictwem opcji udostępnianych przez Google w ramach Google Ads, na stronie prywatności i warunków Google oraz w serwisie aboutads.info dla podmiotów trzecich biorących udział.",
+      body: "Ta strona finansowana jest reklamami, a do ich serwowania wykorzystujemy Google AdSense. Google i jego partnerzy mogą ustawiać pliki cookie lub korzystać z podobnych technologii, aby serwować i mierzyć reklamy. Sposób wykorzystania reklam spersonalizowanych można kontrolować w ustawieniach przeglądarki, na stronie Google's Ads Settings oraz za pośrednictwem opcji udostępnianych przez Google w ramach Google Advertising, na stronie prywatności i warunków Google oraz w serwisie aboutads.info dla podmiotów trzecich biorących udział.",
     },
     {
       heading: "Treści zewnętrzne",

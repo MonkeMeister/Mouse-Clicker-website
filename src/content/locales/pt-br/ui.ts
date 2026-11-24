@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Empresa",
     privacyPolicy: "Política de privacidade",
     blurb:
-      "Teste todos os botões, a rodinha, as teclas e a taxa de clique direto no seu navegador. Grátis, sem cadastro, sem download e sem que nenhum dado saia do seu dispositivo. Todos os testes rodam localmente no seu navegador — nada é baixado, nada é enviado.",
+      "Teste todos os botões, a rodinha, as teclas e a taxa de clique direto no seu navegador. Grátis, sem cadastro, sem download. Cada medição é contada no seu navegador e nunca sai de lá. Este site é financiado por publicidade, e a política de privacidade explica o que isso significa.",
     disclaimer:
       "Todas as medições vêm dos eventos padrão do navegador. Os resultados descrevem o que o seu computador recebeu, e não o estado interno do seu hardware.",
     rights: "© {year} {brand}. Todos os direitos reservados.",

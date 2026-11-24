@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — Diagnósticos gratuitos en el navegador para tu ratón, tu teclado y tu hardware de puntero.",
   metaDescription:
-    "Prueba todos los botones, la rueda, las teclas y la velocidad de clic directamente en tu navegador. Gratis, sin registro, sin descargas y sin que ningún dato salga de tu dispositivo.",
+    "Prueba todos los botones, la rueda, las teclas y la velocidad de clic directamente en tu navegador. Gratis, sin registro y sin instalar nada. Tus mediciones nunca salen del navegador.",
   badge: "Funciona íntegramente en tu navegador",
   heroTitleBefore: "Descubre qué están haciendo realmente tu",
   heroTitleHighlight: "ratón y teclado",
   heroTitleAfter: "de verdad.",
   heroSubtitle:
-    "Cinco diagnósticos gratuitos que leen los eventos que tu equipo recibe de verdad: todos los botones, todas las direcciones de la rueda, todas las teclas y la velocidad real de tu puntero. Sin descargas, sin registro y sin que nada salga de tu dispositivo.",
+    "Cinco diagnósticos gratuitos que leen los eventos que tu equipo recibe de verdad: todos los botones, todas las direcciones de la rueda, todas las teclas y la velocidad real de tu puntero. Sin descargas, sin registro y con todas las mediciones dentro de tu navegador.",
   ctaPrimary: "Prueba tu ratón ahora",
   ctaSecondary: "Ver todas las herramientas",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Publicidad",
-      body: "Este sitio se financia con publicidad. Los socios publicitarios pueden instalar cookies o usar tecnologías similares para servir y medir anuncios. Puedes controlar cómo se usa la publicidad personalizada desde los ajustes de tu navegador y desde las opciones que ofrece Google en Google Ads, en la página de Privacidad y Condiciones de Google, y en aboutads.info para los proveedores de terceros que participan.",
+      body: "Este sitio se financia con publicidad, y para mostrarla usamos Google AdSense. Google y sus socios pueden instalar cookies o usar tecnologías similares para servir y medir los anuncios. Puedes controlar cómo se usa la publicidad personalizada desde los ajustes de tu navegador, desde la página «Google's Ads Settings» y desde las opciones que ofrece Google en Google Advertising, en la página de Privacidad y Condiciones de Google y en aboutads.info para los proveedores de terceros que participan.",
     },
     {
       heading: "Contenido de terceros",

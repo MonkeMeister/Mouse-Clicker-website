@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — Free browser-based diagnostics for your mouse, keyboard and pointer hardware.",
   metaDescription:
-    "Test every button, wheel, key and click rate directly in your browser. Free, no signup, nothing downloaded and no data leaves your device.",
+    "Test every button, wheel, key and click rate directly in your browser. Free, no signup, nothing downloaded. Your measurements never leave the browser.",
   badge: "Runs entirely in your browser",
   heroTitleBefore: "Find out exactly what your",
   heroTitleHighlight: "mouse and keyboard",
   heroTitleAfter: "are really doing.",
   heroSubtitle:
-    "Five free diagnostics that read the events your computer actually receives — every button, every wheel direction, every key, and the real speed of your pointer. No download, no signup, and nothing leaves your device.",
+    "Five free diagnostics that read the events your computer actually receives — every button, every wheel direction, every key, and the real speed of your pointer. No download, no signup, and every measurement stays in your browser.",
   ctaPrimary: "Test your mouse now",
   ctaSecondary: "Browse all tools",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Advertising",
-      body: "This site is funded by advertising. Advertising partners may set cookies or use similar technologies to serve and measure ads. You can control how personalised advertising is used through your browser settings, and through the options provided by Google for Google Advertising, Google's Privacy and Terms page, and aboutads.info for participating third-party vendors.",
+      body: "This site is funded by advertising, and we use Google AdSense to serve it. Google and its partners may set cookies or use similar technologies to serve and measure ads. You can control how personalised advertising is used through your browser settings, through Google's Ads Settings page, and through the options provided by Google for Google Advertising, Google's Privacy and Terms page, and aboutads.info for participating third-party vendors.",
     },
     {
       heading: "Third-party content",

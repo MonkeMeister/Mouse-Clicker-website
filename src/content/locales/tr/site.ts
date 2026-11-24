@@ -10,13 +10,13 @@ export const home: HomeContent = {
   metaTitle:
     "MouseLab — Fare, klavye ve işaretçi donanımınız için ücretsiz tarayıcı tabanlı tanılama araçları.",
   metaDescription:
-    "Her tuşu, tekerleği, klavye tuşunu ve tıklama hızını doğrudan tarayıcınızda test edin. Ücretsiz, üyelik gerekmez, hiçbir şey indirilmez ve verileriniz cihazınızdan çıkmaz.",
+    "Her tuşu, tekerleği, klavye tuşunu ve tıklama hızını doğrudan tarayıcınızda test edin. Ücretsiz, üyelik gerekmez, hiçbir şey indirilmez. Ölçümleriniz tarayıcınızdan hiç çıkmaz.",
   badge: "Tamamen tarayıcınızda çalışır",
   heroTitleBefore: "Farenizin ve klavyenizin",
   heroTitleHighlight: "gerçekte ne yaptığını",
   heroTitleAfter: "tam olarak öğrenin.",
   heroSubtitle:
-    "Bilgisayarınızın gerçekte aldığı olayları okuyan beş ücretsiz tanılama aracı — her tuş, her tekerlek yönü, her klavye tuşu ve işaretçinizin gerçek hızı. İndirme yok, üyelik yok, cihazınızdan hiçbir şey çıkmaz.",
+    "Bilgisayarınızın gerçekte aldığı olayları okuyan beş ücretsiz tanılama aracı — her tuş, her tekerlek yönü, her klavye tuşu ve işaretçinizin gerçek hızı. İndirme yok, üyelik yok ve her ölçüm tarayıcınızda kalır.",
   ctaPrimary: "Farenizi şimdi test edin",
   ctaSecondary: "Tüm araçlara göz atın",
   stats: [
@@ -218,7 +218,7 @@ export const privacy: PrivacyContent = {
     },
     {
       heading: "Reklamlar",
-      body: "Bu site reklamlarla finanse edilir. Reklam ortakları, reklamları sunmak ve ölçmek için çerez veya benzeri teknolojiler kullanabilir. Kişiselleştirilmiş reklamların nasıl kullanıldığını tarayıcı ayarlarınızdan ve Google'ın Google Advertising, Google'ın Gizlilik ve Şartlar sayfası ile katılımcı üçüncü taraf satıcılar için aboutads.info sayfalarından sunulan seçeneklerle kontrol edebilirsiniz.",
+      body: "Bu site reklamlarla finanse edilir ve reklamları sunmak için Google AdSense kullanıyoruz. Google ve iş ortakları, reklamları sunmak ve ölçmek için çerez ya da benzeri teknolojiler kullanabilir. Kişiselleştirilmiş reklamların nasıl kullanıldığını tarayıcı ayarlarınızdan, Google'ın Ads Settings sayfasından ve Google'ın Google Advertising, Google'ın Gizlilik ve Şartlar sayfası ile katılımcı üçüncü taraf satıcılar için aboutads.info sayfalarında sunduğu seçeneklerle kontrol edebilirsiniz.",
     },
     {
       heading: "Üçüncü taraf içerik",

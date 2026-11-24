@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AdSenseLoader } from "@/components/AdSenseLoader";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { getContent } from "@/content/registry";
@@ -10,7 +11,7 @@ import {
   type Locale,
 } from "@/lib/i18n";
 import { languageAlternates } from "@/lib/seo";
-import { SITE } from "@/lib/site";
+import { ADSENSE, SITE } from "@/lib/site";
 import { getToolNav } from "@/lib/tools";
 import "../globals.css";
 
@@ -91,7 +92,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={LOCALE_BY_CODE[locale].hreflang} dir={LOCALE_BY_CODE[locale].dir} className="h-full">
-      <body className="flex min-h-full flex-col">
+      <body
+        className="flex min-h-full flex-col"
+        data-ad-client={ADSENSE.autoAds ? ADSENSE.client : undefined}
+      >
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
@@ -103,6 +107,8 @@ export default async function LocaleLayout({
           {children}
         </div>
         <Footer locale={locale} ui={content.ui} tools={tools} />
+        {/* The advertising script is injected on the first interaction. */}
+        <AdSenseLoader client={ADSENSE.client} />
       </body>
     </html>
   );

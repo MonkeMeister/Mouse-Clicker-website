@@ -16,7 +16,7 @@ export const ui: UiStrings = {
     companyHeading: "Firma",
     privacyPolicy: "Polityka prywatności",
     blurb:
-      "Sprawdź każdy przycisk, kółko, klawisz i częstotliwość kliknięć bezpośrednio w przeglądarce. Za darmo, bez rejestracji, bez pobierania i bez wysyłania danych z urządzenia. Każdy test działa lokalnie w przeglądarce — nic nie jest pobierane ani wysyłane.",
+      "Sprawdź każdy przycisk, kółko, klawisz i częstotliwość kliknięć bezpośrednio w przeglądarce. Za darmo, bez rejestracji, bez pobierania. Każdy pomiar jest liczony w przeglądarce i nigdy jej nie opuszcza. Strona finansowana jest reklamami, a polityka prywatności wyjaśnia, co to oznacza.",
     disclaimer:
       "Wszystkie pomiary pochodzą ze standardowych zdarzeń przeglądarki. Wyniki opisują to, co dotarło do komputera, a nie stan wewnętrzny sprzętu.",
     rights: "© {year} {brand}. Wszelkie prawa zastrzeżone.",
